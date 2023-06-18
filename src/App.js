@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Route, Routes, Link } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import ArchivedHabits from "./pages/ArchivedHabits.jsx/ArchivedHabits";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+        <h1>Habit Tracker</h1>
+
+        <Link to="archived">Archived Habits</Link>
+      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/archived" element={<ArchivedHabits />} />
+      </Routes>
     </div>
   );
 }
