@@ -15,12 +15,15 @@ const Home = () => {
     setShowModal((prevState) => ({ ...prevState, newHabitModal: true }));
   };
 
-  const openHabitDetailsModal = async (habitName) => {
-    // const habitToEdit = state.habits.find(
-    //   (habit) => habit.name.toLowerCase() === habitName.toLowerCase()
-    // );
-    // await dispatch({ type: "SET_EDIT_DETAILS", payload: habitToEdit });
-    setShowModal((prevState) => ({ ...prevState, habitDetailsModal: true }));
+  const openHabitDetailsModal = async (selectedHabitName) => {
+    const habitToEdit = state.habits?.find(
+      (habit) => habit.name.toLowerCase() === selectedHabitName.toLowerCase()
+    );
+    dispatch({ type: "SET_EDIT_HABIT", payload: habitToEdit });
+    setShowModal((prevState) => ({
+      ...prevState,
+      habitDetailsModal: true,
+    }));
   };
 
   return (
@@ -30,7 +33,7 @@ const Home = () => {
         <NewHabitModal setModal={setShowModal} />
       ) : null}
       {showModal.habitDetailsModal ? (
-        <HabitDetailsModal setModal={setShowModal} />
+        <HabitDetailsModal modalValues={showModal} setModal={setShowModal} />
       ) : null}
       <div>
         {state?.habits?.map((habit) => (

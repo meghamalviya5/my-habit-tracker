@@ -1,8 +1,8 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import ReactDom from "react-dom";
 import { HabitContext } from "../context/HabitContext";
 
-const HabitDetailsModal = ({ setModal }) => {
+const HabitDetailsModal = ({ modalValues, setModal }) => {
   // close the modal when clicking outside the modal.
   const modalRef = useRef();
   const closeModal = (e) => {
@@ -13,6 +13,7 @@ const HabitDetailsModal = ({ setModal }) => {
 
   const { state, dispatch, handleEdit } = useContext(HabitContext);
 
+  console.log("skjnfsj in state in details ---- ", state);
   // render the modal JSX in the portal div.
   return ReactDom.createPortal(
     <div className="container" ref={modalRef} onClick={closeModal}>
@@ -25,10 +26,10 @@ const HabitDetailsModal = ({ setModal }) => {
               type="text"
               placeholder="Enter Habit"
               id="habit-name"
-              value={state.editHabit.name}
+              value={state?.editHabit?.name}
               onChange={(e) =>
                 dispatch({
-                  type: "SET_HABIT_DETAILS",
+                  type: "SET_EDIT_HABIT_DETAILS",
                   payload: { key: "name", value: e.target.value },
                 })
               }
@@ -40,11 +41,11 @@ const HabitDetailsModal = ({ setModal }) => {
               id="habit-repeat"
               onChange={(e) =>
                 dispatch({
-                  type: "SET_HABIT_DETAILS",
+                  type: "SET_EDIT_HABIT_DETAILS",
                   payload: { key: "repeat", value: e.target.value },
                 })
               }
-              value={state.editHabit.repeat}
+              value={state?.editHabit?.repeat}
             >
               <option value="Daily">Daily</option>
               <option value="Monthly">Monthly</option>
@@ -57,11 +58,11 @@ const HabitDetailsModal = ({ setModal }) => {
               id="habit-goal"
               onChange={(e) =>
                 dispatch({
-                  type: "SET_HABIT_DETAILS",
+                  type: "SET_EDIT_HABIT_DETAILS",
                   payload: { key: "goal", value: e.target.value },
                 })
               }
-              value={state.editHabit.goal}
+              value={state?.editHabit?.goal}
             >
               <option value="1 time Daily">1 time Daily</option>
               <option value="2 times Daily">2 times Daily</option>
@@ -74,11 +75,11 @@ const HabitDetailsModal = ({ setModal }) => {
               id="habit-time-of-day"
               onChange={(e) =>
                 dispatch({
-                  type: "SET_HABIT_DETAILS",
+                  type: "SET_EDIT_HABIT_DETAILS",
                   payload: { key: "timeOfday", value: e.target.value },
                 })
               }
-              value={state.editHabit.timeOfday}
+              value={state?.editHabit?.timeOfday}
             >
               <option value="Any Time">Any Time</option>
               <option value="Noon">Noon</option>
@@ -91,11 +92,11 @@ const HabitDetailsModal = ({ setModal }) => {
               id="habit-start-date"
               onChange={(e) =>
                 dispatch({
-                  type: "SET_HABIT_DETAILS",
+                  type: "SET_EDIT_HABIT_DETAILS",
                   payload: { key: "startDate", value: e.target.value },
                 })
               }
-              value={state.editHabit.startDate}
+              value={state?.editHabit?.startDate}
             >
               <option value="Today">Today</option>
               <option value="Tomorrow">Tomorrow</option>

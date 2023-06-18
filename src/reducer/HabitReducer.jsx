@@ -10,6 +10,16 @@ export const habitReducer = (state, action) => {
           [action.payload.key]: action.payload.value,
         },
       };
+
+    case "SET_EDIT_HABIT_DETAILS":
+      return {
+        ...state,
+        editHabit: {
+          ...state.editHabit,
+          [action.payload.key]: action.payload.value,
+        },
+      };
+
     case "ADD_HABIT":
       return {
         ...state,
@@ -40,7 +50,7 @@ export const habitReducer = (state, action) => {
         console.log(habit.name !== action.payload, "....delete");
         return habit.name !== action.payload;
       });
-      return { ...state, habits: updated };
+      return { ...state, habits: updatedh };
 
     case "ARCHIVE_HABIT":
       const habitToArchive = state.habits.find(
