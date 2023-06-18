@@ -50,8 +50,8 @@ const Home = () => {
             </button>
             <button
               onClick={() => {
-                dispatch({ type: "DELETE_HABIT", payload: habit.name });
                 dispatch({ type: "ARCHIVE_HABIT", payload: habit.name });
+                dispatch({ type: "DELETE_HABIT", payload: habit.name });
               }}
             >
               Archive
