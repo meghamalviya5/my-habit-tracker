@@ -46,11 +46,11 @@ export const habitReducer = (state, action) => {
       return { ...state, habits: updated };
 
     case "DELETE_HABIT_FROM_ARCHIVE":
-      const updatedh = [...state.habits].filter((habit) => {
+      const updatedArchived = [...state.archivedHabits].filter((habit) => {
         console.log(habit.name !== action.payload, "....delete");
         return habit.name !== action.payload;
       });
-      return { ...state, habits: updatedh };
+      return { ...state, archivedHabits: updatedArchived };
 
     case "ARCHIVE_HABIT":
       const habitToArchive = state.habits.find(

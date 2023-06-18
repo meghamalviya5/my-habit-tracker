@@ -9,7 +9,7 @@ const ArchivedHabits = () => {
         {state?.archivedHabits?.map((habit) => (
           <div>
             <button className="btn-details">{habit.name}</button>
-            {/* <button
+            <button
               onClick={() =>
                 dispatch({
                   type: "DELETE_HABIT_FROM_ARCHIVE",
@@ -18,7 +18,7 @@ const ArchivedHabits = () => {
               }
             >
               Delete
-            </button> */}
+            </button>
           </div>
         ))}
       </div>
